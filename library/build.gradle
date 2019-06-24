@@ -1,6 +1,10 @@
 apply plugin: 'com.android.library'
 apply plugin: 'idea'
 
+if (System.getenv('JITPACK') != null) {
+    apply plugin: 'com.github.dcendents.android-maven'
+}
+
 idea {
     module {
         downloadJavadoc = false
@@ -28,6 +32,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
